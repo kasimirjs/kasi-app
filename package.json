@@ -1,0 +1,47 @@
+{
+  "name": "@kasimirjs/app",
+  "version": "1.0.0",
+  "description": "",
+
+  "main": "dist/index",
+  "types": "dist/index.d.ts",
+
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "files": [
+    "/dist"
+  ],
+
+
+  "scripts": {
+    "make.mjs": "tsc -d && mv dist/index.js dist/index.mjs",
+    "make.cjs": "tsc -m commonjs",
+    "build": "npm run make.mjs && npm run make.cjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kasimirjs/kasi-app.git"
+  },
+  "author": "Matthias Leuffen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kasimirjs/kasi-app/issues"
+  },
+  "homepage": "https://github.com/kasimirjs/kasi-editor#readme",
+  "dependencies": {
+    "reflect-metadata": "*",
+    "@kasimirjs/embed": "git+https://github.com/kasimirjs/kasi-embed.git#main"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.1.1",
+    "ts-jest": "^29.0.3",
+    "ts-loader": "^9.4.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
