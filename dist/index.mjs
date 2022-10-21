@@ -1,4 +1,2 @@
-import { href } from "./router/fuctions";
-export const App = {
-    href: href,
-};
+export * from "./router/fuctions";
+export const App = {};
