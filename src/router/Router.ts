@@ -4,14 +4,14 @@ import {route} from "./fuctions";
 
 
 
-type RouteDefinition = {
+export type RouteDefinition = {
     name: string;
     route: string;
     regex: string;
     element: any
 }
 
-type CurRoute = {
+export type CurRoute = {
     name: string
     route: string
     regex: string;
@@ -74,4 +74,6 @@ class Router {
 
 }
 
+
 export const router = new Router();
+
