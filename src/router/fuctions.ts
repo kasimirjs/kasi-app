@@ -7,13 +7,16 @@ export const Route = {
 }
 
 
-export function link() {
-    console.log("link");
+export function href(routeName : string, params: any = {}) {
+    let routeDef = router.routes.find((route) => route.name === routeName);
+    let paramsTotal = {...router.currentRoute.route_params, ...params};
+
+    let route = routeDef.route.replace(/\{([a-z0-9_]+)\}/gi, (p1, p2) => paramsTotal[p2]);
+    return route;
 }
 
-export function href(arg : any = null) {
-    console.log("href");
-    throw "undefined2zzz" + arg;
+export function link(routeName : string, params : any = {}) {
+    window.location.pathname = href(routeName, params);
 }
 
 
