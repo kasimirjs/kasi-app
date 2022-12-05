@@ -15,7 +15,7 @@ export function href(routeName : string, params: any = {}) {
     return route;
 }
 
-export function link(routeName : string, params : any = {}) {
+export function goto(routeName : string, params : any = {}) {
     window.location.pathname = href(routeName, params);
 }
 
