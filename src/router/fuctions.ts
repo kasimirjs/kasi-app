@@ -1,11 +1,6 @@
 import {router} from "./Router";
 
 
-export const Route = {
-    routesDefined: []
-
-}
-
 
 export function href(routeName : string, params: any = {}) {
     let routeDef = router.routes.find((route) => route.name === routeName);

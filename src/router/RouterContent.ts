@@ -1,5 +1,5 @@
 import {customElement, ka_create_element, ka_dom_ready} from "@kasimirjs/embed";
-import {router} from "./Router";
+import {CurRoute, router} from "./Router";
 
 @customElement("ka-router-content")
 class RouterContent extends HTMLElement {
@@ -21,4 +21,4 @@ class RouterContent extends HTMLElement {
     }
 }
 
-export var currentRoute;
+export var currentRoute : CurRoute | null;
