@@ -13,7 +13,7 @@ class RouterContent extends HTMLElement {
         console.log("currentRoute", router.currentRoute);
 
         let element = ka_create_element("div", {});
-        element.innerText = "BraceRoute undefined: "
+        element.innerText = "BraceRoute: route is not defined: '" + router.currentRoute + "'"
         if (route !== null) {
             element = new (route.element)(route.route_params);
         }
