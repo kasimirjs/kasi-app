@@ -1,6 +1,16 @@
 import {router} from "../router/Router";
 
-
+/**
+ * Query the api
+ *
+ * <example>
+ *     let result = await api_call("GET@/v1/api/{subscription_id}/{scope_id}/index.json", {subscription_id: 1, scope_id: 2})
+ * </example>
+ *
+ * @param path
+ * @param params
+ * @param body
+ */
 export async function api_call(path : string, params : any= {}, body : any =null) {
     let url = `${path}`;
     let method = "GET";
@@ -43,5 +53,5 @@ export async function api_call(path : string, params : any= {}, body : any =null
         }
     }
 
-    return response.json();
+    return await response.json();
 }
