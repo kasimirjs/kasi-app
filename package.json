@@ -34,7 +34,7 @@
   "homepage": "https://github.com/kasimirjs/kasi-editor#readme",
   "dependencies": {
     "reflect-metadata": "*",
-    "@kasimirjs/embed": "^1.1.6"
+    "@kasimirjs/embed": "^1.1.5"
   },
   "devDependencies": {
     "@types/jest": "^29.1.1",
