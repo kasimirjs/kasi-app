@@ -1,21 +1,11 @@
 import {router} from "../router/Router";
 
-/**
- * Query the api
- *
- * <example>
- *     let result = await api_call("GET@/v1/api/{subscription_id}/{scope_id}/index.json", {subscription_id: 1, scope_id: 2})
- * </example>
- *
- * @param path
- * @param params
- * @param body
- */
-export async function api_call(path : string, params : any= {}, body : any =null) {
+
+
+export function api_url(path : string, params : any= {}) : {url: string, method: string} {
     let url = `${path}`;
     let method = "GET";
     [method, url] = url.split("@");
-
     url = url.replace(/{([a-zA-Z0-9_\-]+)}/g, (match, p1) => {
         let val = null;
         if (typeof params[p1] !== "undefined")
@@ -31,6 +21,30 @@ export async function api_call(path : string, params : any= {}, body : any =null
         }
         return encodeURIComponent(val);
     })
+    if (params !== null) {
+        url += "?" + (new URLSearchParams(params));
+    }
+    return {url, method};
+}
+
+
+/**
+ * Query the api
+ *
+ * <example>
+ *     let result = await api_call("GET@/v1/api/{subscription_id}/{scope_id}/index.json", {subscription_id: 1, scope_id: 2})
+ * </example>
+ *
+ * @param path
+ * @param params
+ * @param body
+ */
+export async function api_call(path : string, params : any= {}, body : any =null) {
+
+    let ret =  api_url(path, params);
+    let url = ret.url;
+    let method = ret.method;
+
     if (params !== null) {
         url += "?" + (new URLSearchParams(params));
     }
