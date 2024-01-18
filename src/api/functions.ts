@@ -61,10 +61,12 @@ export async function api_call(path : string, params : any= {}, body : any =null
         try {
             let json = JSON.parse(text);
             alert ("Request failed: " + response.statusText + "\n\n" + json.error.message);
+
         } catch (e) {
             alert("Request failed: " + response.statusText + ":\n\n " + text);
             throw e;
         }
+        throw text;
     }
 
     return await response.json();
