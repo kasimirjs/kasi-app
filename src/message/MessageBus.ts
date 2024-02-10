@@ -28,10 +28,10 @@ class MessageBus {
      * @param fn {function(msg: T<>)}
      * @returns {string}    The listener ID to unregister
      */
-    on<T extends MessageConstructor>(message: T, fn: (msg : T) => void) : string {
+    on<T extends Message>(message: T, fn: (msg : T) => void) : string {
         let listenerId = "e" + this.index++;
 
-        console.log("register", message.name);
+        console.log("register", message.MsgName);
         this.listeners[listenerId] = {
             on:  message,
             fn: fn
@@ -45,7 +45,7 @@ class MessageBus {
 
     /**
      *
-     * @param message {KaMessage}
+     * @param message {Message}
      */
     async trigger(message : Message) {
         for (let curListenerId in this.listeners) {
@@ -56,4 +56,8 @@ class MessageBus {
 }
 
 
-export const messageBus = new MessageBus();
+const messageBus = new MessageBus();
+
+export function ka_messageBus() : MessageBus {
+    return messageBus;
+}

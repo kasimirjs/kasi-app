@@ -1,16 +1,15 @@
 import {customElement, ka_create_element, ka_dom_ready} from "@kasimirjs/embed";
-import {CurRoute, router} from "./Router";
+import {CurRoute, ka_router, router} from "./Router";
 
 @customElement("ka-router-content")
 class RouterContent extends HTMLElement {
 
 
     async connectedCallback() {
-        console.log("ka-router-content");
         await ka_dom_ready();
-        let route = router.update()
+        let route = ka_router().update()
         currentRoute = route;
-        console.log("currentRoute", router.currentRoute);
+        console.log("currentRoute", ka_router().currentRoute);
 
         let element = ka_create_element("div", {});
         element.innerText = "BraceRoute: route is not defined: '" + router.currentRoute + "'"

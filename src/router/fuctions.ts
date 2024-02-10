@@ -1,24 +1,28 @@
-import {router} from "./Router";
+import {ka_router, router} from "./Router";
 
 
 
-export function href(routeName : string, params: any = {}) {
-    let routeDef = router.routes.find((route) => route.name === routeName);
-    let paramsTotal = {...router.currentRoute.route_params, ...params};
-
-    let route = routeDef.route.replace(/\{([a-z0-9_]+)\}/gi, (p1, p2) => paramsTotal[p2]);
-    return route;
+export function href(routeName : string, params: any = {}) : string {
+   return ka_router().getHref(routeName, params);
 }
 
-export function goto(routeName : string, params : any = {}) {
-    window.location.pathname = href(routeName, params);
+export function goto(routeName : string, params : any = {}) : void {
+    ka_router().goto(routeName, params);
 }
 
 
-export function route(routeName: string, route : string) {
+
+/**
+ *
+ * @ClassDecorator
+ * @param routeName     The name of the route (routes to same name will be handles SPA-mode by sending RouteChangeEvent)
+ * @param route
+ */
+export function KaRoute(routeName: string, route : string) {
     return function (classOrDescriptor: any) : void {
-        console.debug("registering route", classOrDescriptor, route);
-        router.addRoute(routeName, route, classOrDescriptor);
+        //console.debug("registering route", classOrDescriptor, route);
+        ka_router().addRoute(routeName, route, classOrDescriptor);
         return classOrDescriptor;
     }
 }
+
