@@ -1,6 +1,7 @@
 {
   "name": "@kasimirjs/app",
   "version": "2.0.1",
+
   "description": "",
 
   "main": "./dist/index.js",
@@ -34,7 +35,7 @@
   "homepage": "https://github.com/kasimirjs/kasi-editor#readme",
   "dependencies": {
     "reflect-metadata": "*",
-    "@kasimirjs/embed": "^1.1.5"
+    "@kasimirjs/embed": "^1.2.2"
   },
   "devDependencies": {
     "@types/jest": "^29.1.1",

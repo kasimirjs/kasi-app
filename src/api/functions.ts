@@ -45,9 +45,7 @@ export async function api_call(path : string, params : any= {}, body : any =null
     let url = ret.url;
     let method = ret.method;
 
-    if (params !== null) {
-        url += "?" + (new URLSearchParams(params));
-    }
+
     let response = await fetch(url, {
         method: method,
         body: body !== null ? JSON.stringify(body) : null,
